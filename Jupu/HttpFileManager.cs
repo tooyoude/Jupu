@@ -10,13 +10,19 @@ namespace Jupu
 {
     class HttpFileManager
     {
+        public static int REWRITE = 0; //文件下载重写模式
+        public static int RESUME = 1;  //文件下载断点续传模式
+                                      
         /// <summary>
-        /// Http方式下载文件
-        /// </summary>
-        /// <param name="url">http地址</param>
-        /// <param name="localfile">本地文件</param>
-        /// <returns></returns>
-        public bool Download(string url, string localfile)
+                                       /// Http方式下载文件
+                                       /// </summary>
+                                       /// <param name="url">http地址</param>
+                                       /// <param name="localfile">本地文件</param>
+                                       /// <param name="DownloadMode">下载模式</param>
+                                       /// <returns></returns>
+
+
+        public bool Download(string url, string localfile, int DownloadMode = 0)
         {
             bool flag = false;
             long startPosition = 0; // 上次下载的文件起始位置
@@ -30,24 +36,34 @@ namespace Jupu
                 return false;
             }
 
+
             // 判断要下载的文件是否存在
             if (File.Exists(localfile))
             {
 
                 writeStream = File.OpenWrite(localfile);             // 存在则打开要下载的文件
                 startPosition = writeStream.Length;                  // 获取已经下载的长度
-
-                if (startPosition >= remoteFileLength)
+                if (DownloadMode == HttpFileManager.RESUME)
                 {
-                    System.Console.WriteLine("本地文件长度" + startPosition + "已经大于等于远程文件长度" + remoteFileLength);
-                    writeStream.Close();
+                    
 
-                    return false;
+                    if (startPosition >= remoteFileLength)
+                    {
+                        System.Console.WriteLine("本地文件长度" + startPosition + "已经大于等于远程文件长度" + remoteFileLength);
+                        writeStream.Close();
+
+                        return false;
+                    }
+                    else
+                    {
+                        writeStream.Seek(startPosition, SeekOrigin.Current); // 本地文件写入位置定位
+                    }
                 }
                 else
                 {
-                    writeStream.Seek(startPosition, SeekOrigin.Current); // 本地文件写入位置定位
+                    writeStream.Seek(0, SeekOrigin.Begin); // 本地文件写入位置定位
                 }
+               
             }
             else
             {

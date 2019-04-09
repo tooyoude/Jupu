@@ -47,7 +47,7 @@ namespace Jupu
                 url = url.Replace("{$$$}", datestr);
                 
                 this.LbStockKLineDayUpdate.Text += "\n" + url ;
-                hfm.Download(url, element+".csv");
+                hfm.Download(url, element+".csv",HttpFileManager.REWRITE);
                 
             }
         }

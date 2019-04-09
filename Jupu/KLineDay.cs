@@ -17,5 +17,6 @@ namespace Jupu
         public Double high { set; get; }
         public long volume { set; get; }
         
+        
     }
 }
