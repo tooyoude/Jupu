@@ -116,8 +116,9 @@ namespace Jupu
                 rsp.Close();
                 return length;
             }
-            catch (Exception e)
+            catch (Exception)
             {
+                
                 return length;
             }
 
