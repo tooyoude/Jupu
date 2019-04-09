@@ -12,6 +12,7 @@ namespace Jupu
 
         public string lastUpdateDate = "19700101";
 
+
         //==========================基本信息======================
         //股票代码
         public string label = "";
