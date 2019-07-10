@@ -22,6 +22,10 @@ namespace Jupu
         /// <param name="DownloadMode">下载模式</param>
         /// <returns></returns>
 
+        
+
+
+
 
         public bool Download(string url, string localfile, int DownloadMode = 0)
         {
