@@ -48,7 +48,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HttpFileManager.cs" />
+    <Compile Include="DataInterface\HttpFileManager.cs" />
     <Compile Include="FrmDataManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +95,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="KLineViewer\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

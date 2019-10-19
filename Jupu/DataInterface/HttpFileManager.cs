@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Jupu
 {
     class HttpFileManager
@@ -18,8 +19,12 @@ namespace Jupu
         /// </summary>
         /// <param name="url">http地址</param>
         /// <param name="localfile">本地文件</param>
-        /// <param name="DownloadMode">下载模式 DownloadMode 为0、1 分别代表 Rewrite重写、Resume续写</param>
+        /// <param name="DownloadMode">下载模式</param>
         /// <returns></returns>
+
+        
+
+
 
 
         public bool Download(string url, string localfile, int DownloadMode = 0)
@@ -126,6 +131,7 @@ namespace Jupu
 
                 if (rsp.StatusCode == HttpStatusCode.OK)
                 {
+
                     length = rsp.ContentLength;// 从文件头得到远程文件的长度
                 }
 
