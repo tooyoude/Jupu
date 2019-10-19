@@ -14,12 +14,12 @@ namespace Jupu
         public static int RESUME = 1;  //文件下载断点续传模式
                                       
         /// <summary>
-                                       /// Http方式下载文件
-                                       /// </summary>
-                                       /// <param name="url">http地址</param>
-                                       /// <param name="localfile">本地文件</param>
-                                       /// <param name="DownloadMode">下载模式</param>
-                                       /// <returns></returns>
+        /// Http方式下载文件
+        /// </summary>
+        /// <param name="url">http地址</param>
+        /// <param name="localfile">本地文件</param>
+        /// <param name="DownloadMode">下载模式 DownloadMode 为0、1 分别代表 Rewrite重写、Resume续写</param>
+        /// <returns></returns>
 
 
         public bool Download(string url, string localfile, int DownloadMode = 0)
